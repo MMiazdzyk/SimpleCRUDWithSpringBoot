@@ -22,7 +22,15 @@ public class CourseJdbcDAO implements DAO<Course>{
 
     @Override
     public List<Course> list() {
-        return null;
+        var sql = "SELECT course_id, title, description, link FROM course";
+        return jdbcTemplate.query(sql, (resultSet, rowNumber)-> {
+            var course = new Course();
+            course.setCourseId(resultSet.getInt("course_id"));
+            course.setTitle(resultSet.getString("title"));
+            course.setDescription(resultSet.getString("description"));
+            course.setLink(resultSet.getString("link"));
+            return course;
+        });
     }
     @Override
     public Course create(Course course) {
