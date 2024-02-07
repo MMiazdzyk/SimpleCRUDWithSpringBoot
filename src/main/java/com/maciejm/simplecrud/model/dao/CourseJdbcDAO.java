@@ -34,9 +34,15 @@ public class CourseJdbcDAO implements DAO<Course>{
         var sql = "SELECT course_id, title, description, link FROM course";
         return jdbcTemplate.query(sql, rowMapper);
     }
+
     @Override
-    public Course create(Course course) {
-        return null;
+    public void create(Course course) {
+        var sql = "INSERT INTO course(title, description, link) values(?,?,?)";
+        int insert = jdbcTemplate.update(sql, course.getTitle(), course.getDescription(), course.getLink());
+        if(insert == 1) {
+            logger.info("New course have been added: " + course.getTitle());
+        }
+
     }
 
     @Override
