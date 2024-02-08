@@ -2,6 +2,7 @@ package com.maciejm.simplecrud.controller;
 
 import com.maciejm.simplecrud.dao.CourseDAO;
 import com.maciejm.simplecrud.model.Course;;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ public class CourseController {
 
     private final CourseDAO courseDAO;
 
-    public CourseController(CourseDAO courseDAO) {
+    public CourseController(@Qualifier("courseServiceJdbcClient")CourseDAO courseDAO) {
         this.courseDAO = courseDAO;
     }
 
