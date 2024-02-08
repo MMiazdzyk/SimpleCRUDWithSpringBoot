@@ -26,6 +26,12 @@ public class SimplecrudApplication {
 		System.out.println("\n All courses -------------------------------------------- \n");
 		List<Course> courses = dao.list();
 		courses.forEach(System.out::println);
+
+		System.out.println("\n get single course -------------------------------------------- \n");
+		var  course5 = dao.get(5).orElse(null);
+		var  course10 = dao.get(10).orElse(null);
+		System.out.println(course5);
+		System.out.println(course10);
 	}
 
 }
