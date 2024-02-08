@@ -15,42 +15,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController()
+@RestController
 @RequestMapping("/api/courses")
 public class CourseController {
 
-    private final CourseDAO courseServiceJdbcTemplate;
+    private final CourseDAO courseDAO;
 
-    public CourseController(CourseDAO courseServiceJdbcTemplate) {
-        this.courseServiceJdbcTemplate = courseServiceJdbcTemplate;
+    public CourseController(CourseDAO courseDAO) {
+        this.courseDAO = courseDAO;
     }
 
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
     List<Course> findAll() {
-        return courseServiceJdbcTemplate.list();
+        return courseDAO.list();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     Course findById(@PathVariable int id) {
-        return courseServiceJdbcTemplate.get(id).orElse(null);
+        return courseDAO.get(id).orElse(null);
     }
 
     @PostMapping("/")
     @ResponseStatus(HttpStatus.CREATED)
     void create(@RequestBody Course course) {
-        courseServiceJdbcTemplate.create(course);
+        courseDAO.create(course);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     void update(@RequestBody Course course, @PathVariable int id) {
-        courseServiceJdbcTemplate.update(course, id);
+        courseDAO.update(course, id);
     }
 
     @DeleteMapping("/{id}")
     void delete(@PathVariable int id) {
-        courseServiceJdbcTemplate.delete(id);
+        courseDAO.delete(id);
     }
 }
