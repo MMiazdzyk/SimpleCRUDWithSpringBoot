@@ -1,5 +1,6 @@
 package com.maciejm.simplecrud.service;
 
+import com.maciejm.simplecrud.dao.CourseDAO;
 import com.maciejm.simplecrud.dao.DAO;
 import com.maciejm.simplecrud.model.Course;
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class CourseServiceJdbcTemplate implements DAO<Course> {
+public class CourseServiceJdbcTemplate implements CourseDAO {
 
     private static final Logger logger = LoggerFactory.getLogger(CourseServiceJdbcTemplate.class);
     private final JdbcTemplate jdbcTemplate;
