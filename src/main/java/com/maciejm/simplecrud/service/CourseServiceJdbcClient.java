@@ -19,7 +19,9 @@ public class CourseServiceJdbcClient implements CourseDAO {
 
     @Override
     public List<Course> list() {
-        return null;
+        return jdbcClient.sql("SELECT course_id, title, description, link FROM course")
+                         .query(Course.class)
+                         .list();
     }
 
     @Override
