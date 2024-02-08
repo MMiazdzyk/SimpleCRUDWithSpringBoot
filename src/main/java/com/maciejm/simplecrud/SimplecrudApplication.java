@@ -19,8 +19,12 @@ public class SimplecrudApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SimplecrudApplication.class, args);
 
-		List<Course> courses = dao.list();
+		System.out.println("\n Create new course -------------------------------------------- \n");
+		var newCourse = new Course("new Course", "Course added from CourseJdbcDAO create method", "www.localhost.com");
+		dao.create(newCourse);
+
 		System.out.println("\n All courses -------------------------------------------- \n");
+		List<Course> courses = dao.list();
 		courses.forEach(System.out::println);
 	}
 
