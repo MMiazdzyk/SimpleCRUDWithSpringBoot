@@ -53,18 +53,24 @@ public class CourseJdbcDAO implements DAO<Course> {
         try {
             course = jdbcTemplate.queryForObject(sql, rowMapper, id);
         } catch (DataAccessException ex) {
-            logger.info(String.format( "Course with id %d was not found", id));
+            logger.info(String.format("Course with id %d was not found", id));
         }
         return Optional.ofNullable(course);
     }
 
     @Override
     public void update(Course course, int id) {
-
+        var sql = "UPDATE course SET title = ?, description = ?, link = ? WHERE course_id = ?";
+        int updated = jdbcTemplate.update(sql, course.getTitle(), course.getDescription(), course.getLink(),
+                                          course.getCourseId());
+        if (updated == 1) {
+            logger.info("Updated course: " + course.getTitle());
+        }
     }
 
     @Override
     public void delete(int id) {
-
+        var sql = "DELETE FROM course WHERE course_id = ?";
+        jdbcTemplate.update(sql,id);
     }
 }
