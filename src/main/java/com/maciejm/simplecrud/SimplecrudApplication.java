@@ -1,7 +1,7 @@
 package com.maciejm.simplecrud;
 
 import com.maciejm.simplecrud.model.Course;
-import com.maciejm.simplecrud.model.dao.DAO;
+import com.maciejm.simplecrud.dao.DAO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

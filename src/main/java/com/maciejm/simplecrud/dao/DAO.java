@@ -1,4 +1,4 @@
-package com.maciejm.simplecrud.model.dao;
+package com.maciejm.simplecrud.dao;
 
 import java.util.List;
 import java.util.Optional;

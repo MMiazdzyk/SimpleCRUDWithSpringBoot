@@ -1,5 +1,6 @@
-package com.maciejm.simplecrud.model.dao;
+package com.maciejm.simplecrud.service;
 
+import com.maciejm.simplecrud.dao.DAO;
 import com.maciejm.simplecrud.model.Course;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class CourseJdbcDAO implements DAO<Course> {
+public class CourseServiceJdbcTemplate implements DAO<Course> {
 
-    private static final Logger logger = LoggerFactory.getLogger(CourseJdbcDAO.class);
+    private static final Logger logger = LoggerFactory.getLogger(CourseServiceJdbcTemplate.class);
     private final JdbcTemplate jdbcTemplate;
 
     private final RowMapper<Course> rowMapper = (resultSet, rowNumber) -> {
@@ -26,7 +27,7 @@ public class CourseJdbcDAO implements DAO<Course> {
         return course;
     };
 
-    public CourseJdbcDAO(JdbcTemplate jdbcTemplate) {
+    public CourseServiceJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
