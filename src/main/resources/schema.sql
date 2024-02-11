@@ -1,0 +1,6 @@
+CREATE TABLE course (
+  course_id INT AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(80) NOT NULL,
+  description VARCHAR(500) NOT NULL,
+  link VARCHAR(255) NOT NULL
+);
