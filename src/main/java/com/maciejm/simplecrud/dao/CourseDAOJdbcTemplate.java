@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 
-@Component
-public class CourseDAO implements DAO<Course> {
+@Component("template")
+public class CourseDAOJdbcTemplate implements CourseDao {
 
-    private static final Logger logger = LoggerFactory.getLogger(CourseDAO.class);
+    private static final Logger logger = LoggerFactory.getLogger(CourseDAOJdbcTemplate.class);
 
     RowMapper<Course> rowMapper = (resultSet, rowNumber) -> {
         var course = new Course();
@@ -27,7 +27,7 @@ public class CourseDAO implements DAO<Course> {
     };
     private final JdbcTemplate jdbcTemplate;
 
-    public CourseDAO(JdbcTemplate jdbcTemplate) {
+    public CourseDAOJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

@@ -1,8 +1,10 @@
 package com.maciejm.simplecrud;
 
 
-import com.maciejm.simplecrud.dao.CourseDAO;
+import com.maciejm.simplecrud.dao.CourseDAOJdbcTemplate;
+import com.maciejm.simplecrud.dao.CourseDao;
 import com.maciejm.simplecrud.model.Course;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +22,9 @@ import java.util.List;
 @RequestMapping("api/courses")
 public class CourseController {
 
-    private final CourseDAO courseDAO;
+    private final CourseDao courseDAO;
 
-    public CourseController(CourseDAO courseDAO) {
+    public CourseController(@Qualifier("client") CourseDao courseDAO) {
         this.courseDAO = courseDAO;
     }
 
